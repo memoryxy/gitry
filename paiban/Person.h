@@ -36,6 +36,8 @@ typedef enum : NSUInteger {
 
 @property (nonatomic, strong) NSMutableArray *works;
 
+@property (nonatomic, strong) NSMutableArray *lastWorkedRooms;
+
 - (BOOL) canWork:(Work *)work;
 - (void)assignWork:(Work *)work;
 

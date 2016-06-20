@@ -25,7 +25,8 @@ const int kWeek = 8;
         for (int i=0; i<7*kWeek+2; i++) {
             [self.room addObject:@0];
         }
-
+        
+        self.lastWorkedRooms = [NSMutableArray new];
     }
     return self;
 }
@@ -46,8 +47,30 @@ const int kWeek = 8;
         if (current.unsignedIntegerValue != WorkType_invalid) {
             return NO;
         }
+        
+        if ([self canRoomWorked:work] == NO) {
+            return NO;
+        }
+        
         return YES;
     }
+}
+
+- (void)addWorkedRoom:(Work *)work {
+    if (self.lastWorkedRooms.count > 4) {
+        [self.lastWorkedRooms removeObjectAtIndex:0];
+    } else {
+        [self.lastWorkedRooms addObject:@(work.room)];
+    }
+}
+
+- (BOOL)canRoomWorked:(Work *)work {
+    for (NSNumber *room in self.lastWorkedRooms) {
+        if (work.room == room.unsignedIntegerValue) {
+            return NO;
+        }
+    }
+    return YES;
 }
 
 - (void)assignWork:(Work *)work {
@@ -59,15 +82,18 @@ const int kWeek = 8;
     } else if (work.wtype == WorkType_day) {
         self.date[work.index] = @(WorkType_day);
         self.room[work.index] = @(work.room);
+        [self addWorkedRoom:work];
         self.day += 1;
     } else if (work.wtype == WorkType_halfDay) {
         self.date[work.index] = @(WorkType_day);
         self.room[work.index] = @(work.room);
+        [self addWorkedRoom:work];
         self.day += 0.5;
     } else if (work.wtype == WorkType_3) {
         self.date[work.index] = @(WorkType_3);
         self.three += 1;
         self.room[work.index] = @(work.room);
+        [self addWorkedRoom:work];
     } else {
         assert(0);
     }
