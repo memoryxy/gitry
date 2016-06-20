@@ -48,7 +48,11 @@ const int kWeek = 8;
             return NO;
         }
         
-        if ([self canRoomWorked:work] == NO) {
+//        if ([self canRoomWorked:work] == NO) {
+//            return NO;
+//        }
+        
+        if ([self haveWored5Days:work]) {
             return NO;
         }
         
@@ -67,6 +71,30 @@ const int kWeek = 8;
 - (BOOL)canRoomWorked:(Work *)work {
     for (NSNumber *room in self.lastWorkedRooms) {
         if (work.room == room.unsignedIntegerValue) {
+            return NO;
+        }
+    }
+    return YES;
+}
+
+- (BOOL)haveWored5Days:(Work *)work {
+    
+    long start = 0;
+    if (work.index>5) {
+        start = work.index-5;
+    } else {
+        return NO;
+    }
+    
+    long end = 0;
+    if (work.index>1) {
+        end = work.index-1;
+    } else {
+        return NO;
+    }
+    
+    for (long i=start; i<end; i++) {
+        if ([self.date[i] unsignedIntegerValue] == WorkType_invalid || [self.date[i] unsignedIntegerValue] ==WorkType_rest) {
             return NO;
         }
     }
