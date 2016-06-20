@@ -18,7 +18,7 @@
         self.nights = [NSMutableArray new];
         self.threes = [NSMutableArray new];
         
-        [self createAllWorks];
+//        [self createAllWorks];
     }
     return self;
 }

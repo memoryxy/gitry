@@ -10,7 +10,7 @@
 
 @interface WorkEngine : NSObject
 
-- (void)createAllWorks;
+//- (void)createAllWorks;
 
 @property (nonatomic, strong) NSMutableArray *days;
 @property (nonatomic, strong) NSMutableArray *nights;

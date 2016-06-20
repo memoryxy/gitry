@@ -17,15 +17,11 @@ const int kWeek = 8;
     self = [super init];
     if (self) {
         self.date = [NSMutableArray new];
-        
-#warning fix me.
         for (int i=0; i<7*kWeek+2; i++) {
             [self.date addObject:@0];
         }
         
         self.room = [NSMutableArray new];
-        
-#warning fix me.
         for (int i=0; i<7*kWeek+2; i++) {
             [self.room addObject:@0];
         }

@@ -111,7 +111,7 @@
     str = [str stringByAppendingString:@"\n"];
     resultStr = [resultStr stringByAppendingString:str];
     for (Person *person in eigine.persons) {
-        NSString *str = [NSString stringWithFormat:@"%@,%.1f,%d,%d", person.name, person.day, person.night, person.three];
+        NSString *str = [NSString stringWithFormat:@"%@,%.1f,%lu,%lu", person.name, person.day, (unsigned long)person.night, (unsigned long)person.three];
         str = [str stringByAppendingString:@"\n"];
         resultStr = [resultStr stringByAppendingString:str];
     }
