@@ -47,11 +47,6 @@
     p.type = Person_normal;
     p.name = @"邱俊芬";
     [persons addObject:p];
-
-    p = [Person new];
-    p.type = Person_normal;
-    p.name = @"汪孝信";
-    [persons addObject:p];
     
     p = [Person new];
     p.type = Person_normal;

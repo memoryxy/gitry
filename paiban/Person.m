@@ -9,7 +9,7 @@
 #import "Person.h"
 #import "Work.h"
 
-const int kWeek = 8;
+const int kWeek = 4;
 
 @implementation Person
 
@@ -52,20 +52,19 @@ const int kWeek = 8;
 //            return NO;
 //        }
         
-        if ([self haveWored5Days:work]) {
-            return NO;
-        }
+//        if ([self haveWored5Days:work]) {
+//            return NO;
+//        }
         
         return YES;
     }
 }
 
 - (void)addWorkedRoom:(Work *)work {
-    if (self.lastWorkedRooms.count > 4) {
+    if (self.lastWorkedRooms.count >= 4) {
         [self.lastWorkedRooms removeObjectAtIndex:0];
-    } else {
-        [self.lastWorkedRooms addObject:@(work.room)];
     }
+    [self.lastWorkedRooms addObject:@(work.room)];
 }
 
 - (BOOL)canRoomWorked:(Work *)work {
@@ -87,8 +86,8 @@ const int kWeek = 8;
     }
     
     long end = 0;
-    if (work.index>1) {
-        end = work.index-1;
+    if (work.index) {
+        end = work.index;
     } else {
         return NO;
     }

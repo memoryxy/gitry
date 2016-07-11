@@ -23,7 +23,7 @@
     
     PersonEngine *eigine = [PersonEngine new];
     int index = 0;
-    for (int week=0; week < 8; week++) {
+    for (int week=0; week < kWeek; week++) {
         for (int day=1; day<8; day++) {
             // night
             Work *awork = [Work new];

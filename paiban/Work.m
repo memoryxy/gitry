@@ -28,11 +28,13 @@
 
 NSString *Type2String(WorkType type, NSUInteger room) {
     if (type == WorkType_invalid) {
-        return @"休";
+        return @"";
     } else if (type == WorkType_day) {
-        return [NSString stringWithFormat:@"%lu", (unsigned long)room];
+        return @"";
+//        return [NSString stringWithFormat:@"%lu", (unsigned long)room];
     } else if (type == WorkType_halfDay) {
-        return [NSString stringWithFormat:@"%lu/", (unsigned long)room];
+        return @"";
+//        return [NSString stringWithFormat:@"%lu/", (unsigned long)room];
     } else if (type == WorkType_night) {
         return [NSString stringWithFormat:@"分值"];
     } else if (type == WorkType_3) {
